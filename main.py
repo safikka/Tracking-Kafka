@@ -15,6 +15,7 @@ with open('config.json', 'r') as f:
 
 # Get the serial port, Kafka server, and Kafka topic from the config file
 serial_port = config['serial_port']
+baudrate = config['baudrate']
 kafka_server = config['kafka_server']
 kafka_topic = config['kafka_topic']
 duration = config['duration_send_in_second']
@@ -22,7 +23,7 @@ mode_data = config['mode_data']
 
 # Open the serial port if mode_data == 1
 if mode_data == 1 :
-    ser = serial.Serial(serial_port, 9600)
+    ser = serial.Serial(serial_port, baudrate)
 
 # Connect to the Kafka broker
 producer = kafka.KafkaProducer(bootstrap_servers=kafka_server)
@@ -33,7 +34,10 @@ count = 1
 while True:
 
     if mode_data == 1:
-        
+
+        # Info mode Serial
+        logger.info('Data from Serial', line)
+
         # Read a line of data from the serial port
         line = ser.readline().decode('utf-8').strip()
         logger.info('Read line from serial port: %s', line)
@@ -99,6 +103,10 @@ while True:
         time.sleep(duration)
 
     else:
+
+        # Info mode Serial
+        logger.info('Data from Dummy', line)
+
         data = "{\"Hell\": " + str(count) + "}"
         producer.send(kafka_topic, data.encode('utf-8'))
         count += 1
