@@ -63,12 +63,12 @@ while True:
 
         # Convert latitude and longitude to decimal degrees
         # (if the coordinates are in degrees, minutes, and seconds)
+        latitude = latitude / 100 + (latitude % 100) / 60
+        longitude = longitude / 100 + (longitude % 100) / 60
         if fields[3] == 'S':
             latitude = -latitude
         if fields[5] == 'W':
             longitude = -longitude
-        latitude = latitude / 100 + (latitude % 100) / 60
-        longitude = longitude / 100 + (longitude % 100) / 60
         logger.info('Converted lat/long to decimal degrees: %f, %f', latitude, longitude)
 
         # # Parse the speed (if available)
