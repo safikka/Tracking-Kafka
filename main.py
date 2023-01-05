@@ -55,6 +55,8 @@ while True:
         print(fields[2])
         latitude = float(fields[2])
         print(latitude)
+        print(latitude / 100)
+        print((latitude % 100) / 60)
         longitude = float(fields[4])
         num_sats = int(fields[7])
         logger.info('Parsed latitude, longitude, and num_sats: %f, %f, %d', latitude, longitude, num_sats)
