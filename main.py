@@ -52,7 +52,9 @@ while True:
         logger.info('Split line into fields: %s', fields)
 
         # Parse the latitude, longitude, and number of satellites
+        print(fields[2])
         latitude = float(fields[2])
+        print(latitude)
         longitude = float(fields[4])
         num_sats = int(fields[7])
         logger.info('Parsed latitude, longitude, and num_sats: %f, %f, %d', latitude, longitude, num_sats)
@@ -98,7 +100,7 @@ while True:
         logger.info('Assembled data: %s', data)
 
         # Send the data to the Kafka broker
-        producer.send(kafka_topic, data)
+        producer.send(kafka_topic, str(data).encode('utf-8'))
         logger.info('Sent data to Kafka broker')
         time.sleep(duration)
 
