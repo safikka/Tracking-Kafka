@@ -98,7 +98,7 @@ while True:
         logger.info('Assembled data: %s', data)
 
         # Send the data to the Kafka broker
-        producer.send(kafka_topic, data.encode('utf-8'))
+        producer.send(kafka_topic, data)
         logger.info('Sent data to Kafka broker')
         time.sleep(duration)
 
