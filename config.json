@@ -1,0 +1,7 @@
+{
+    "serial_port": "COM5",
+    "kafka_server": "g-02-0001.kppmining.com:9091",
+    "kafka_topic": "tpc-dtrack-tracking-live",
+    "duration_send_in_second": 2,
+    "mode_data": 0
+}
