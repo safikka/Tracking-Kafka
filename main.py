@@ -36,7 +36,7 @@ while True:
     if mode_data == 1:
 
         # Info mode Serial
-        logger.info('Data from Serial', line)
+        logger.info('Data from Serial')
 
         # Read a line of data from the serial port
         line = ser.readline().decode('utf-8').strip()
@@ -105,7 +105,7 @@ while True:
     else:
 
         # Info mode Serial
-        logger.info('Data from Dummy', line)
+        logger.info('Data from Dummy')
 
         data = "{\"Hell\": " + str(count) + "}"
         producer.send(kafka_topic, data.encode('utf-8'))
